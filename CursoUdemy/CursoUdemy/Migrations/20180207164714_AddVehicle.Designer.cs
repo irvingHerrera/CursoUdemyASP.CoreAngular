@@ -11,9 +11,10 @@ using System;
 namespace CursoUdemy.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180207164714_AddVehicle")]
+    partial class AddVehicle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +93,7 @@ namespace CursoUdemy.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("CursoUdemy.Models.VehicleFeature", b =>
@@ -105,7 +106,7 @@ namespace CursoUdemy.Migrations
 
                     b.HasIndex("FeatureId");
 
-                    b.ToTable("VehicleFeatures");
+                    b.ToTable("VehicleFeature");
                 });
 
             modelBuilder.Entity("CursoUdemy.Models.Model", b =>

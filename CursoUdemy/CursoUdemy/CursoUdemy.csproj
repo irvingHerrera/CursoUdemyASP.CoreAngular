@@ -27,6 +27,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180202205331_InitialModel.cs" />
     <Compile Remove="Migrations\20180202205331_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20180207170115_AddVehicle2.cs" />
+    <Compile Remove="Migrations\20180207170115_AddVehicle2.Designer.cs" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
