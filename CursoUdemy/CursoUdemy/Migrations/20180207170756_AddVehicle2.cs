@@ -14,22 +14,22 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_VehicleFeature_Features_FeatureId",
-                table: "VehicleFeature");
+                table: "Features");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_VehicleFeature_Vehicle_VehicleId",
-                table: "VehicleFeature");
+                table: "Features");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_VehicleFeature",
-                table: "VehicleFeature");
+                table: "Features");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Vehicle",
                 table: "Vehicle");
 
             migrationBuilder.RenameTable(
-                name: "VehicleFeature",
+                name: "Features",
                 newName: "VehicleFeatures");
 
             migrationBuilder.RenameTable(
@@ -109,7 +109,7 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.RenameTable(
                 name: "VehicleFeatures",
-                newName: "VehicleFeature");
+                newName: "Features");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Vehicles_ModelId",
@@ -118,7 +118,7 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.RenameIndex(
                 name: "IX_VehicleFeatures_FeatureId",
-                table: "VehicleFeature",
+                table: "Features",
                 newName: "IX_VehicleFeature_FeatureId");
 
             migrationBuilder.AddPrimaryKey(
@@ -128,7 +128,7 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_VehicleFeature",
-                table: "VehicleFeature",
+                table: "Features",
                 columns: new[] { "VehicleId", "FeatureId" });
 
             migrationBuilder.AddForeignKey(
@@ -141,7 +141,7 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_VehicleFeature_Features_FeatureId",
-                table: "VehicleFeature",
+                table: "Features",
                 column: "FeatureId",
                 principalTable: "Features",
                 principalColumn: "Id",
@@ -149,7 +149,7 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_VehicleFeature_Vehicle_VehicleId",
-                table: "VehicleFeature",
+                table: "Features",
                 column: "VehicleId",
                 principalTable: "Vehicle",
                 principalColumn: "Id",

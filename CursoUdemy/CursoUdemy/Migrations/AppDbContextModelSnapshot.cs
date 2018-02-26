@@ -95,7 +95,7 @@ namespace CursoUdemy.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("CursoUdemy.Models.VehicleFeature", b =>
+            modelBuilder.Entity("CursoUdemy.Models.Features", b =>
                 {
                     b.Property<int>("VehicleId");
 
@@ -124,7 +124,7 @@ namespace CursoUdemy.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CursoUdemy.Models.VehicleFeature", b =>
+            modelBuilder.Entity("CursoUdemy.Models.Features", b =>
                 {
                     b.HasOne("CursoUdemy.Models.Feature", "Feature")
                         .WithMany()
@@ -132,7 +132,7 @@ namespace CursoUdemy.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CursoUdemy.Models.Vehicle", "Vehicle")
-                        .WithMany("VehicleFeature")
+                        .WithMany("Features")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

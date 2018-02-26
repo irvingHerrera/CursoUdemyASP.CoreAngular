@@ -32,11 +32,11 @@ namespace CursoUdemy.Models
 
         public DateTime LastUpdate { get; set; }
 
-        public ICollection<VehicleFeature> VehicleFeature { get; set; }
+        public ICollection<VehicleFeature> Features { get; set; }
 
         public Vehicle()
         {
-            VehicleFeature = new Collection<VehicleFeature>();
+            Features = new Collection<VehicleFeature>();
         }
     }
 }

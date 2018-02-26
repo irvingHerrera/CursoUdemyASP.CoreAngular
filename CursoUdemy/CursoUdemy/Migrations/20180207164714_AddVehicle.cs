@@ -34,7 +34,7 @@ namespace CursoUdemy.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehicleFeature",
+                name: "Features",
                 columns: table => new
                 {
                     VehicleId = table.Column<int>(nullable: false),
@@ -64,14 +64,14 @@ namespace CursoUdemy.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleFeature_FeatureId",
-                table: "VehicleFeature",
+                table: "Features",
                 column: "FeatureId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "VehicleFeature");
+                name: "Features");
 
             migrationBuilder.DropTable(
                 name: "Vehicle");
