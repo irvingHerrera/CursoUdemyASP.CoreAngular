@@ -36,7 +36,7 @@ namespace CursoUdemy.Mapping
 
                     var removeFeactures = v.Features
                     .Where(f => !vr.Features
-                    .Contains(f.FeatureId));
+                    .Contains(f.FeatureId)).ToList();
                     foreach (var f in removeFeactures)
                         v.Features.Remove(f);
 

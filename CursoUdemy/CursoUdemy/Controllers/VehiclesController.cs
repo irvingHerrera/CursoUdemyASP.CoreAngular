@@ -59,6 +59,7 @@ namespace CursoUdemy.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicleAsync([FromBody]SaveVehicleResource vehicle)
         {
+            throw new Exception();
 
             if (!ModelState.IsValid)
             {
