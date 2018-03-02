@@ -20,11 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Content Remove="ClientApp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Migrations\20180202205331_InitialModel.cs" />
     <Compile Remove="Migrations\20180202205331_InitialModel.Designer.cs" />
     <Compile Remove="Migrations\20180207170115_AddVehicle2.cs" />

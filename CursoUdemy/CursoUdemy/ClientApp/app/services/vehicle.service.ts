@@ -26,8 +26,12 @@ export class VehicleService {
     }
 
     getVehicle(id: any) {
-        console.log("getVehicle");
         return this.http.get('/api/vehicles/' + id)
+            .map(res => res.json());
+    }
+
+    getVehicles() {
+        return this.http.get('/api/vehicles/')
             .map(res => res.json());
     }
 

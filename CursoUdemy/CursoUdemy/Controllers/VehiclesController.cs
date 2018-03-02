@@ -59,7 +59,6 @@ namespace CursoUdemy.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicleAsync([FromBody]SaveVehicleResource vehicle)
         {
-            throw new Exception();
 
             if (!ModelState.IsValid)
             {
@@ -105,6 +104,15 @@ namespace CursoUdemy.Controllers
             var vehicleResource = mapper.Map<Vehicle, VehicleResource>(vehicle);
 
             return Ok(vehicleResource);
+        }
+
+
+
+        [HttpGet]
+        public async Task<IEnumerable<VehicleResource>> GetVehicles()
+        {
+           var queryResult = await repository.GetVehicles();
+           return mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(queryResult);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CursoUdemy.Models;
 using CursoUdemy.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CursoUdemy.Persistence
@@ -38,5 +39,13 @@ namespace CursoUdemy.Persistence
         {
             appDbContext.Remove(vehicle);
         }
+
+        public async Task<IEnumerable<Vehicle>> GetVehicles() =>
+            await appDbContext.Vehicle
+            .Include(v => v.Model)
+            .ThenInclude(m => m.Make)
+            .Include(v => v.Features)
+            .ThenInclude(vf => vf.Feature)
+            .ToListAsync();
     }
 }
