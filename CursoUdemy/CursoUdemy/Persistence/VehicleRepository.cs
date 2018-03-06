@@ -1,7 +1,10 @@
 ﻿using CursoUdemy.Models;
 using CursoUdemy.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CursoUdemy.Persistence
@@ -40,12 +43,35 @@ namespace CursoUdemy.Persistence
             appDbContext.Remove(vehicle);
         }
 
-        public async Task<IEnumerable<Vehicle>> GetVehicles() =>
-            await appDbContext.Vehicle
+        public async Task<IEnumerable<Vehicle>> GetVehicles(VehicleQuery queryObj)
+        {
+            var query = appDbContext.Vehicle
             .Include(v => v.Model)
             .ThenInclude(m => m.Make)
             .Include(v => v.Features)
             .ThenInclude(vf => vf.Feature)
-            .ToListAsync();
+            .AsQueryable();
+
+            var dictionary = new Dictionary<string, Expression<Func<Vehicle, object>>>
+            {
+                { "make", v => v.Model.Make.Name },
+                { "model", v => v.Model.Name },
+                { "contactName", v => v.ContactName },
+                { "id", v => v.Id }
+            };
+
+            query = ApplyOrdering(queryObj, query, dictionary);
+
+            return await query.ToListAsync();
+        }
+
+        private IQueryable<Vehicle> ApplyOrdering(VehicleQuery queryObj, IQueryable<Vehicle> query, Dictionary<string, Expression<Func<Vehicle, object>>> dictionary)
+        {
+            if (queryObj.IsSortAscending)
+                return query.OrderBy(dictionary[queryObj.SortBy]);
+            else
+                return query.OrderByDescending(dictionary[queryObj.SortBy]);
+        }
+            
     }
 }
