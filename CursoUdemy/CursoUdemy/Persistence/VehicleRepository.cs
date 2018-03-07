@@ -63,15 +63,9 @@ namespace CursoUdemy.Persistence
 
             query = query.ApplyOrdering(queryObj, dictionary);
 
-            return await query.ToListAsync();
-        }
+            query = query.ApplyPaging(queryObj);
 
-        private IQueryable<Vehicle> ApplyOrdering(VehicleQuery queryObj, IQueryable<Vehicle> query, Dictionary<string, Expression<Func<Vehicle, object>>> dictionary)
-        {
-            if (queryObj.IsSortAscending)
-                return query.OrderBy(dictionary[queryObj.SortBy]);
-            else
-                return query.OrderByDescending(dictionary[queryObj.SortBy]);
+            return await query.ToListAsync();
         }
             
     }
