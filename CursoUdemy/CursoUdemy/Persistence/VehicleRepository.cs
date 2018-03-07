@@ -1,4 +1,5 @@
-﻿using CursoUdemy.Models;
+﻿using CursoUdemy.Extensions;
+using CursoUdemy.Models;
 using CursoUdemy.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -60,7 +61,7 @@ namespace CursoUdemy.Persistence
                 { "id", v => v.Id }
             };
 
-            query = ApplyOrdering(queryObj, query, dictionary);
+            query = query.ApplyOrdering(queryObj, dictionary);
 
             return await query.ToListAsync();
         }

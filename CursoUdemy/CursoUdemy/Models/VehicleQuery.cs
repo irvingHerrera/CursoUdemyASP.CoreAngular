@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CursoUdemy.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CursoUdemy.Models
 {
-    public class VehicleQuery
+    public class VehicleQuery : IQueryObject
     {
         public int? MakeId { get; set; }
 
