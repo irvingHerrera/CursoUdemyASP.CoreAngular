@@ -109,12 +109,12 @@ namespace CursoUdemy.Controllers
 
 
         [HttpGet]
-        public async Task<IEnumerable<VehicleResource>> GetVehicles(VehicleQueryResource filterResource)
+        public async Task<QueryResultResource<VehicleResource>> GetVehicles(VehicleQueryResource filterResource)
         {
 
             var filter = mapper.Map<VehicleQueryResource, VehicleQuery>(filterResource);
-           var queryResult = await repository.GetVehicles(filter);
-           return mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(queryResult);
+            var queryResult = await repository.GetVehicles(filter);
+            return mapper.Map<QueryResult<Vehicle>, QueryResultResource<VehicleResource>>(queryResult);
         }
     }
 }

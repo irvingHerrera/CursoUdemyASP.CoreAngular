@@ -9,10 +9,11 @@ import { Vehicle, KeyValuePair } from '../../models/vehicle';
 })
 
 export class VehicleListComponent implements OnInit {
-    vehicles: Vehicle[];
+    private readonly PAGE_SIZE = 3;
+    queryResult: any = {};
     makes: KeyValuePair[];
     query: any = {
-        pageSize: 3
+        pageSize: this.PAGE_SIZE
     };
     columns = [
         { title: 'id' },
@@ -33,27 +34,31 @@ export class VehicleListComponent implements OnInit {
 
     private populateVehicles() {
         this.vehicleService.getVehicles(this.query)
-            .subscribe(vehicles => this.vehicles = vehicles);
+            .subscribe(result => this.queryResult = result);
     }
 
     onFilterChange() {
         //filtro local
-        //var vehicles = this.allVehicles;
+        //var queryResult = this.allVehicles;
 
         //if (this.query.makeId)
-        //    vehicles = vehicles.query(v => v.make.id == this.query.makeId);
+        //    queryResult = queryResult.query(v => v.make.id == this.query.makeId);
 
         //if (this.query.modelId)
-        //    vehicles = vehicles.query(v => v.model.id == this.query.modelId);
+        //    queryResult = queryResult.query(v => v.model.id == this.query.modelId);
 
-        //this.vehicles = vehicles;
-
+        //this.queryResult = queryResult;
+        this.query.page = 1;
+        this.query.pageSize = this.PAGE_SIZE;
         this.populateVehicles();
     }
 
     resetFilter() {
-        this.query = {};
-        this.onFilterChange();
+        this.query = {
+            page: 1,
+            pageSize: this.PAGE_SIZE
+        };
+        this.populateVehicles();
     }
 
     sortBy(columnName: string) {

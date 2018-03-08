@@ -13,6 +13,8 @@ namespace CursoUdemy.Mapping
     {
         public MappingProfile()
         {
+
+            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<Make, MakeResource>();
             CreateMap<Make, KeyValuePairResource>();
             CreateMap<Model, KeyValuePairResource>();
